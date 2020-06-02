@@ -25,7 +25,11 @@ bottomButton.addEventListener('mouseout', goodbyeColor)
 document.addEventListener('keydown', logKey)
 
 function logKey(event) {
-    alert('You broke Fun Bus :(')
+    if (event.key === 'Escape' || event.key === 'Enter'){
+        alert('You broke Fun Bus :(')
+    }else if (event.key === 'Shift') {
+        alert('Fun Bus is ok')
+    }
 }
 
 // dbl Click
@@ -56,9 +60,27 @@ h1Title.addEventListener('mouseenter', changeTheTitle)
 const h2Title = document.querySelector('h2');
 
 function changeH2Title(event) {
-    event.target.style.color = 'white'
-    alert('There never was an h2 here. Never will be....unless you refresh the page')
+    event.target.style.color = 'purple'
+    console.log('There never was an h2 here. Never will be....unless you refresh the page')
 }
 h2Title.addEventListener('mousedown', changeH2Title)
 
-//
+// contextmenu
+let noContext = document.getElementById('context');
+
+noContext.addEventListener('contextmenu', e => {
+  e.preventDefault();
+});
+
+// Online kind of useless?
+window.addEventListener('online', (event) => {
+    console.log("You are now connected to the network. Yay!");
+});
+
+
+// prevent default
+
+document.querySelector('.nav').addEventListener('click', function(event) {
+    event.preventDefault
+    alert('You cant leave here')
+})
